@@ -16,7 +16,7 @@ class FakeInfoTest extends TestCase {
   }
 
   public function test_getCpr() {
-    $this->fakeInfo->method('getCpr')->willReturn(0101011234);
+    $this->fakeInfo->method('getCpr')->willReturn('0101011234');
     $exp = 10;
     $cpr = $this->fakeInfo->getCpr();
 
