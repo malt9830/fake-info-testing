@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src\FakeInfo.php';
+require_once 'src/FakeInfo.php';
 
 use PHPUnit\Framework\TestCase;
 
