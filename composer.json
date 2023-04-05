@@ -1,6 +1,6 @@
 {
     "name": "malt9830/fake-info-testing",
-    "description": "Testing assignment for the fake info generator",
+    "description": "Testing assignment for the fake info generator.",
     "license": "Unlicense",
     "require-dev": {
         "phpunit/phpunit": "^10.0",
