@@ -13,4 +13,4 @@ jobs:
         run: composer install --prefer-dist --no-progress
       - name: Run tests
         run: composer run-script test
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "This job's status is ${{ job.status }}."
