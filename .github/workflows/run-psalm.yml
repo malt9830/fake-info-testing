@@ -2,7 +2,7 @@ name: Run Psalm
 run-name: ${{ github.actor }} is running static code analysis
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  run-psalm:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
