@@ -48,9 +48,9 @@ class FullNameGenderAndBirthDateTest extends TestCase {
    * @dataProvider provide_getFullNameGenderAndBirthDate_ExpectedKeys
    */
   public function test_getFullNameGenderAndBirthDate_ContainsExpectedKeys($key) {
-    $fakePerson = $this->fakeInfo->getFullNameGenderAndBirthDate();
+    $data = $this->fakeInfo->getFullNameGenderAndBirthDate();
 
-    $this->assertArrayHasKey($key, $fakePerson, 'Array contains key');
+    $this->assertArrayHasKey($key, $data, 'Array contains key');
   }
   public static function provide_getFullNameGenderAndBirthDate_ExpectedKeys() {
     return [
@@ -66,9 +66,9 @@ class FullNameGenderAndBirthDateTest extends TestCase {
    * @dataProvider provide_getFullNameGenderAndBirthDate_UnexpectedKeys
    */
   public function test_getFullNameGenderAndBirthDate_ContainsUnexpectedKeys($key) {
-    $fakePerson = $this->fakeInfo->getFullNameGenderAndBirthDate();
+    $data = $this->fakeInfo->getFullNameGenderAndBirthDate();
 
-    $this->assertArrayNotHasKey($key, $fakePerson, 'Array contains key');
+    $this->assertArrayNotHasKey($key, $data, 'Array contains key');
   }
   public static function provide_getFullNameGenderAndBirthDate_UnexpectedKeys() {
     return [

@@ -8,8 +8,40 @@ class FakePersonsTest extends TestCase {
   private FakeInfo $fakeInfo;
 
   protected function setUp(): void {
-    // $this->fakeInfo = $this->createStub(FakeInfo::class);
-    $this->fakeInfo = new FakeInfo;
+    $this->fakeInfo = $this->createStub(FakeInfo::class);
+    // $this->fakeInfo = new FakeInfo;
+    $this->fakeInfo->method('getFakePersons')->willReturnCallback(function (int $amount = 2) {
+      if ($amount < 2) {
+        $amount = 2;
+      }
+      if ($amount > 200) {
+        $amount = 200;
+      }
+      $bulkInfo = array();
+
+      for ($index = 0; $index < $amount; $index++) {
+        $fakeInfo = [
+          'CPR' => '2601481203',
+          'firstName' => 'Amanda M.',
+          'lastName' => 'Carlsen',
+          'gender' => 'female',
+          'birthDate' => '1948-01-26',
+          'address' => [
+            'street' => 'gUISlfePhQåku woYxGMaYjtrYGtqÆKABMøJØxIc',
+            'number' => '430',
+            'floor' => '38',
+            'door' => 'th',
+            'postal_code' => '4200',
+            'town_name' => 'Slagelse'
+          ],
+          'phoneNumber' => '58701222',
+        ];
+
+        array_push($bulkInfo, $fakeInfo);
+      }
+
+      return $bulkInfo;
+    });
   }
 
   protected function tearDown(): void {
