@@ -55,14 +55,14 @@ class FakePersonTest extends TestCase {
   /**
    * Check if getFakePerson contains expected keys
    * 
-   * @dataProvider provide_getFakePerson_ExpectedKeys
+   * @dataProvider provide_getFakePerson_ContainsExpectedKeys
    */
   public function test_getFakePerson_ContainsExpectedKeys($key) {
     $fakePerson = $this->fakeInfo->getFakePerson();
 
     $this->assertArrayHasKey($key, $fakePerson, 'Array contains key');
   }
-  public static function provide_getFakePerson_ExpectedKeys() {
+  public static function provide_getFakePerson_ContainsExpectedKeys() {
     return [
       ['CPR'],
       ['firstName'],
@@ -92,6 +92,48 @@ class FakePersonTest extends TestCase {
       [1],              // Integer
       [true],           // Boolean - true
       [false]           // Boolean - false
+    ];
+  }
+
+  /**
+   * Check if getFakePerson addresses contains expected keys
+   * 
+   * @dataProvider provide_Address_ExpectedKeys
+   */
+  public function test_Address_ContainsExpectedKeys($key) {
+    $person = $this->fakeInfo->getFakePerson();
+    $address = $person['address'];
+
+    $this->assertArrayHasKey($key, $address, "Address contains key: $key");
+  }
+  public static function provide_Address_ExpectedKeys() {
+    return [
+      ['street'],
+      ['number'],
+      ['floor'],
+      ['door'],
+      ['postal_code'],
+      ['town_name']
+    ];
+  }
+
+  /**
+   * Check if getFakePerson addresses contains unexpected keys
+   * 
+   * @dataProvider provide_Address_UnexpectedNonKeys
+   */
+  public function test_Address_ContainsUnexpectedKeys($key) {
+    $person = $this->fakeInfo->getFakePerson();
+    $address = $person['address'];
+
+    $this->assertArrayNotHasKey($key, $address, "Address does not contain key: $key");
+  }
+  public static function provide_Address_UnexpectedNonKeys() {
+    return [
+      ['Street'],     // Actual key but capitalised
+      ['postalCode'], // Actual key but in camel case
+      ['townname'],   // Actual key without underscore
+      ['country'],    // Potential key
     ];
   }
 }
